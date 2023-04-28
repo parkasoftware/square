@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" dir="ltr">
+<head>
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <style>
+        :root {
+            --main-color: var(--ghost-accent-color);
+            --second-color: {{@custom.second_color}}
+        }
+    </style>
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}} {{{block "body_class"}}} font-body back-to-top" id="trex_body">
+
+    {{> 'header'}}
+
+    {{{body}}}
+
+    {{> 'footer'}}
+    
+    <a href="#" class="cd-top text-replace js-cd-top">
+        {{> 'icons/arrow-up'}}
+    </a>
+    <script src="{{asset "built/build.min.js"}}"></script>
+    {{ghost_foot}}
+</body>
+</html>

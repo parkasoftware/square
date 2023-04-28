@@ -1,0 +1,36 @@
+{{#get "authors" limit="4"}}
+    {{#match authors.length '>' 0}}
+        <section class="bg-[#f6f7f8] py-16">
+                <div class="container">
+
+                    {{#get "pages" filter="tag:hash-authors" limit="1" as |post|}}
+                        {{#if post}}
+                            {{#post}}
+                                <!-- Title -->
+                                <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row justify-end items-start mb-12">
+                                    <div class="basis-2/4">
+                                        <span class="text-xs uppercase text-grey font-semibold mb-2 block">
+                                            {{excerpt}}
+                                        </span>
+                                        <h2 class="space-bold text-4xl second-color">
+                                            {{title}}
+                                        </h2>
+                                    </div>
+                                    <div class="lg:basis-2/4 flex justify-end items-center space-x-1">
+                                        <a href="{{url}}" class="text-xs uppercase text-grey font-semibold">{{t "meet our all authors"}}</a>
+                                        <i class='bx bx-right-arrow-alt text-grey'></i>
+                                    </div>
+                                </div>
+                            {{/post}}
+                        {{/if}}
+                    {{/get}}
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                        {{#foreach authors}}
+                            {{> 'loop-author'}}
+                        {{/foreach}}
+                    </div>
+                </div>
+            </section>
+    {{/match}}
+{{/get}}

@@ -1,0 +1,16 @@
+<section class="container grid grid-cols-1 md:grid-cols-5 h-[700px] overflow-hidden">
+    <div class="md:col-span-3 flex items-center h-[700px]">
+        <div class="max-w-[600px] mr-14">
+            <h1 class="space-bold text-6xl second-color">
+                {{@site.description}}
+            </h1>
+            <p class="mt-4 text-grey font-medium">
+                {{@custom.full_description}}
+            </p>
+        </div>
+    </div>
+
+    <div class="col-span-2 hidden md:block relative">
+        <img class="lazyload object-cover w-full h-full" src="{{img_url @site.cover_image size="xxs"}}" data-src="{{img_url @site.cover_image size="xl"}}" alt="{{@site.title}}">
+    </div>
+</section>

@@ -1,0 +1,45 @@
+{{{html}}}
+<!-- CTA -->
+<div id="trex_cta" class="relative">
+    <div class="max-w-[80%] mx-auto text-center px-5 lg:px-20 py-14 relative not-prose rounded-[32px] bg-[#f6f7f8] border border-gray-200">
+        {{#has visibility="paid"}}
+            <div class="space-bold second-color text-4xl mb-6">
+                {{t "This post is for paying subscribers only"}}
+            </div>
+            <div class="text-sm mb-6 text-grey font-medium">
+                {{t "Sign up now to read the post and get access to the full library of posts for subscribers only."}}
+            </div>
+        {{/has}}
+
+        {{#has visibility="members"}}
+            <div class="space-bold second-color text-4xl mb-6 ">
+                {{t "This post is for subscribers only"}}
+            </div>
+            <div class="text-sm mb-6 text-grey  font-medium">
+                {{t "Sign up now and upgrade your account to read the post and get access to the full library of posts for paying subscribers only."}}
+            </div>
+        {{/has}}
+
+        {{#has visibility="tiers"}}
+            <div class="space-bold second-color text-4xl mb-6 ">
+                {{t "This post is for subscribers on the" }} {{tiers}} {{t "only"}}
+            </div>
+            <div class="text-sm mb-6 text-grey  font-medium">
+                {{t "Sign up now and upgrade your account to read the post and get access to the full library of posts for subscribers on the"}} {{tiers}} {{t "only"}}
+            </div>
+        {{/has}}
+        {{#if @member}}
+            <a href="#" data-portal="account/plans" class="second-bg inline-block rounded-md px-8 py-5 text-xs uppercase font-bold hover:main-bg transition-all duration-75 text-white">
+                {{t "Upgrade now"}}
+            </a>
+        {{else}}
+            <a href="#" data-portal="signup" class="second-bg inline-block rounded-md px-8 py-5 text-xs uppercase font-bold hover:main-bg transition-all duration-75 text-white">
+                {{t "Subsribe now"}}
+            </a>
+            <div class="text-xs font-semibold mt-6 text-grey">
+                {{t "Already have an account?"}} <a href="#" data-portal="signin" class="second-color">{{t "Sign in"}}</a>
+            </div>
+        {{/if}}
+    </div>
+</div>
+<!-- /CTA -->

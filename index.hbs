@@ -1,0 +1,24 @@
+{{!< default}}
+
+<main>
+    <div class="max-w-[700px] mx-auto text-center py-24">
+        <h1 class="space-bold second-color text-5xl">
+            {{page.title}}
+        </h1>
+        <div class="text-base font-medium text-grey max-w-[500px] mx-auto mt-4">
+            {{page.excerpt}}
+        </div>
+    </div>
+    <div class="bg-[#f6f7f8] py-16">
+        <div class="container">
+            <!-- Projects -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="trex_blog">
+                {{#foreach posts}}
+                    {{> 'loop'}}
+                {{/foreach}}
+            </div>
+            <!-- /Projects -->
+            {{pagination}}
+        </div>
+    </div>
+</main>

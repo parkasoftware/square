@@ -1,0 +1,12 @@
+<section class="rounded-[32px] bg-[#f6f7f8] border border-gray-200 p-12">
+    <h4 class="text-xl space-bold text-center second-color mb-6">
+        {{comment_count empty="0 comments" singular="comment" plural="comments"}}
+    </h4>
+    <div class="flex justify-center">
+        <button class="rounded-xl px-12 py-5 text-xs uppercase font-bold second-bg inline-block hover:main-bg transition-all duration-75 text-white" id="trex_show_comments">{{t "show comment"}}</button>
+        <button class="rounded-xl px-12 py-5 text-xs uppercase font-bold second-bg hover:main-bg transition-all duration-75 text-white hidden" id="trex_hide_comments">{{t "hide comment"}}</button>
+    </div>
+    <div id="trex_comments_content" class="hidden mt-12">
+        {{comments title="" count=false mode="auto"}}
+    </div>
+</section>

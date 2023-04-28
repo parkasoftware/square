@@ -1,0 +1,30 @@
+{{#if isSecondary}}
+    <ul class="second-color text-sm font-semibold flex justify-center space-x-10 lg:justify-start items-center">
+        {{#foreach navigation}}
+            <li>
+                <a href="{{url absolute="true"}}" class="hover:main-color {{#if current}}main-color{{/if}}">
+                    {{label}}
+                </a>
+            </li>
+        {{/foreach}}
+    </ul>
+{{else}}
+
+    <div>
+        <nav class="relative">
+            <button class="block xl:hidden" id="trex_open_menu">
+                <i class='bx bx-menu text-xl' ></i>
+            </button>
+            <ul class="second-color font-semibold flex-col absolute top-10 -right-4 hidden border border-gray-100 xl:!border-0 xl:!flex bg-white shadow-lg xl:!shadow-none xl:!visible xl:bg-transparent xl:static xl:flex-row xl:items-center xl:space-x-8 xl:space-y-0 z-50" id="trex_menu">
+                {{#foreach navigation}}
+                    <li>
+                        <a href="{{url absolute="true"}}" class="py-3 pr-32 pl-5 xl:p-0 block hover:main-color {{#if current}}main-color{{/if}}">
+                            {{label}}
+                        </a>
+                    </li>
+                {{/foreach}}
+            </ul>
+        </nav>
+    </div>
+
+{{/if}}

@@ -1,0 +1,125 @@
+{
+    "name": "square",
+    "description": "Simple & clean ghost theme",
+    "version": "1.1.0",
+    "engines": {
+        "ghost": ">=4.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Trexthemes",
+        "email": "trexthemes@gmail.com",
+        "url": "https://trexthemes.com"
+    },
+    "scripts": {
+        "dev": "gulp",
+        "zip": "gulp zip",
+        "test": "gscan .",
+        "test:ci": "gscan --fatal --verbose .",
+        "pretest": "gulp build",
+        "preship": "yarn test",
+        "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; else echo \"Uncomitted changes found.\" && exit 1; fi",
+        "postship": "git fetch && gulp release"
+    },
+    "config": {
+        "card_assets": true,
+        "posts_per_page": 10,
+        "image_sizes": {
+            "xxs": {
+                "width": 100
+            },
+            "xs": {
+                "width": 600
+            },
+            "l": {
+                "width": 1500
+            },
+            "xl": {
+                "width": 2500
+            }
+        },
+        "custom": {
+            "endpoint_form": {
+                "type": "text"
+            },
+            "instagram_link": {
+                "type": "text"
+            },
+            "full_description": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "second_color": {
+                "type": "color",
+                "group": "homepage",
+                "default": "#31274b"
+            },
+            "show_notification": {
+                "type": "boolean",
+                "group": "homepage",
+                "default": false
+            },
+            "notification_color": {
+                "type": "color",
+                "group": "homepage",
+                "default": "#d8fb52"
+            },
+            "notification_text": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "notification_link_text": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "notification_link": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "time_days_of_work": {
+                "type": "text"
+            },
+            "direct_contact": {
+                "type": "text"
+            },
+            "adress": {
+                "type": "text"
+            }
+        }
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "blog",
+        "minimal",
+        "clean",
+        "simple",
+        "multipropose",
+        "magazine",
+        "reading"
+    ],
+    "devDependencies": {
+        "@tailwindcss/line-clamp": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.9",
+        "autoprefixer": "10.4.7",
+        "beeper": "2.1.0",
+        "cssnano": "5.1.11",
+        "gscan": "4.31.2",
+        "gulp": "^4.0.2",
+        "gulp-concat": "2.6.1",
+        "gulp-file-include": "^2.3.0",
+        "gulp-livereload": "4.0.2",
+        "gulp-postcss": "9.0.1",
+        "gulp-uglify": "3.0.2",
+        "gulp-zip": "5.1.0",
+        "postcss": "8.4.14",
+        "postcss-cli": "^8.3.1",
+        "postcss-easy-import": "4.0.0",
+        "pump": "3.0.0",
+        "tailwindcss": "^3.1.2"
+    },
+    "dependencies": {
+        "gulp-cli": "^2.3.0"
+    }
+}

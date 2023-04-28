@@ -1,0 +1,70 @@
+{{!< default}}
+
+<main>
+    <div class="max-w-[700px] mx-auto text-center py-24">
+        <h1 class="space-bold second-color text-5xl">
+            {{page.title}}
+        </h1>
+        <div class="text-base font-medium text-grey max-w-[500px] mx-auto mt-4">
+            {{page.excerpt}}
+        </div>
+    </div>
+    <div class="bg-[#f6f7f8]">
+        <div class="container">
+            <div class="px-8 md:px-24 py-16 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="flex flex-col space-y-10">
+                    {{#if @custom.time_days_of_work}}
+                    <div>
+                        <span class="text-xs uppercase second-color font-semibold">{{t 'Time & days of work'}}</span>
+                        <div class="text-xl font-bold mt-2" id="w_days">
+                            {{@custom.time_days_of_work}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if @custom.time_days_of_work}}
+                    <div>
+                        <span class="text-xs uppercase second-color font-semibold">{{t 'Direct contact'}}</span>
+                        <div class="text-xl font-bold mt-2" id="w_contact">
+                            {{@custom.direct_contact}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if @custom.time_days_of_work}}
+                    <div>
+                        <span class="text-xs uppercase second-color font-semibold">{{t 'adress'}}</span>
+                        <div class="text-xl font-bold mt-2" id="w_adress">
+                            {{@custom.adress}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="col-span-2">
+                    <form  action="{{#if @custom.endpoint_form}}{{@custom.endpoint_form}}{{/if}}" method="POST" id="formspree">
+                        <div>
+                            <div>
+                                <div class="mb-6">
+                                    <label for="name" class="text-xs uppercase tracking-wide text-[#ababab] font-semibold mb-2 block">{{t 'Your name'}}</label>
+                                    <input type="text" name="name" id="name" placeholder="{{t 'Name'}}" class="rounded-xl text-sm px-4 py-4 block !outline-none w-full border border-gray-200" required="true" autocomplete="off">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="email" class="text-xs uppercase tracking-wide text-[#ababab] font-semibold mb-2 block">{{t 'Your Email adress'}}</label>
+                                    <input type="text" name="email" id="email" placeholder="{{t 'Email adress'}}" class="rounded-xl text-sm px-4 py-4 block !outline-none w-full border border-gray-200" required="true" autocomplete="off">
+                                </div>
+                                <div class="mb-12">
+                                    <label for="message" class="text-xs uppercase tracking-wide text-[#ababab] font-semibold mb-2 block">{{t 'Your message'}}</label>
+                                    <textarea name="message" name="message" id="message" cols="30" rows="10" class="rounded-xl text-sm px-4 py-4 block !outline-none w-full border border-gray-200" placeholder="{{t 'Message'}}" autocomplete="off"></textarea>
+                                </div>
+                                <div class="flex justify-center">
+                                    <button type="submit" class="px-12 py-5 text-xs uppercase font-boldinline-block transition-all duration-75 text-white second-bg hover:main-bg rounded-lg font-semibold">{{ t "Send message"}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

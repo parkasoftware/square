@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" dir="ltr">
+<head>
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+</head>
+
+<body class="{{body_class}} {{{block "body_class"}}} font-body back-to-top" id="trex_body">
+
+    <header class="border-b border-gray-100 py-6">
+        <div class="container">
+            <div class="flex items-center justify-center">
+                <div>
+                    {{#if @site.logo}}
+                        <a href="{{@site.url}}">
+                            <img src="{{@site.logo}}" alt="{{@site.title}}" class="max-w-[140px]">
+                        </a>
+                    {{else}}
+                        <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                            {{@site.title}}
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-16">
+        <div class="w-[88vw] xl:w-[60vw] 2xl:w-[900px] mx-auto">
+            <div class="mb-12 flex flex-col items-center">
+                <div class="flex space-x-3 items-center mb-4">
+                    <h1 class="text-9xl space-bold second-color leading-none">
+                        {{statusCode}}
+                    </h1>
+                </div>
+                <div class="text-[#ababab] text-xl font-semibold">
+                    {{message}}
+                </div>
+                <div class="flex justify-center mt-8 mb-10">
+                    <a href="{{@site.url}}" class="px-10 py-6 text-xs uppercase text-white font-bold main-bg inline-block hover:bg-main dark:hover:bg-main">
+                        {{t "Back to home"}}
+                    </a>
+                </div>
+            </div>
+            {{#if errorDetails}}
+                <div class="max-w-full prose lg:prose-lg dark:prose-invert prose-a:text-main prose-img:m-0 prose-blockquote:s_border_color prose-hr:border-zinc-800">
+                    <h3>{{t "Theme errors"}}</h3>
+                    <ul>
+                        {{#foreach errorDetails}}
+                            <li>
+                                <em>{{{rule}}}</em>
+
+                                {{#foreach failures}}
+                                    <p><span>{{t "Ref:"}} {{ref}}</span></p>
+                                    <p><span>{{t "Message:"}} {{message}}</span></p>
+                                {{/foreach}}
+                            </li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+            {{/if}}
+
+        </div>
+    </main>
+
+</body>
+</html>

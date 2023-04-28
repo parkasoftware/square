@@ -1,0 +1,37 @@
+{{#get "posts" limit="3" filter="tag:-hash-project" include="tags,authors"}}
+{{#match posts.length ">" 0}}
+    <section class="bg-[#f6f7f8] py-16">
+        <div class="container">
+            <!-- Title -->
+            <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row justify-end items-start mb-12">
+
+                {{#get "pages" filter="slug:blog" limit="1" as |post|}}
+                    {{#if post}}
+                        {{#post}}
+                            <div class="basis-2/4">
+                                <span class="text-xs uppercase text-grey font-semibold mb-2 block">
+                                    {{excerpt}}
+                                </span>
+                                <h2 class="space-bold text-4xl second-color">
+                                    {{title}}
+                                </h2>
+                            </div>
+                        {{/post}}
+                    {{/if}}
+                {{/get}}
+                <div class="lg:basis-2/4 flex justify-end items-center space-x-1">
+                    <a href="{{@site.url}}/blog/" class="text-xs uppercase text-grey font-semibold">{{t "discover more"}}</a>
+                    <i class='bx bx-right-arrow-alt text-grey'></i>
+                </div>
+            </div>
+            <!-- Projects -->
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {{#foreach posts}}
+                    {{> 'loop'}}
+                {{/foreach}}
+            </div>
+            <!-- /Projects -->
+        </div>
+    </section>
+{{/match}}
+{{/get}}

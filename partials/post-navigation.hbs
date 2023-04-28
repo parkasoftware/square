@@ -1,0 +1,18 @@
+<aside class="flex flex-col lg:flex-row justify-between lg:space-y-0 lg:space-x-20 px-5 py-12 second-color">
+    {{#prev_post}}
+    <div class="text-center lg:text-left">
+        <h4 class="text-xl space-bold leading-tight">
+            <a href="{{url}}"  class="hover:main-color">{{title}}</a>
+        </h4>
+        <span class="font-semibold text-xs uppercase tracking-wide mt-2 text-grey">{{t 'previous post'}}</span>
+    </div>
+    {{/prev_post}}
+    {{#next_post}}
+    <div class="text-center lg:text-right">
+        <h4 class="text-xl space-bold leading-tight">
+            <a href="{{url}}" class="hover:main-color">{{title}}</a>
+        </h4>
+        <span class="font-semibold text-xs uppercase tracking-wide mt-2 text-grey">{{t 'next post'}}</span>
+    </div>
+    {{/next_post}}
+</aside>

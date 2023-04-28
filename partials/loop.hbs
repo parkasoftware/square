@@ -1,0 +1,73 @@
+<article class="h-auto bg-white rounded-[32px] p-6 pb-8 trex_post">
+    {{^has tag="#project"}}
+        <div class="flex justify-between flex-col mb-5 sm:mb-0 sm:flex-row">
+            <div class="flex items-center space-x-2 mb-5 justify-center sm:justify-start">
+                <!-- Authors -->
+                <div class="flex -space-x-4">
+                    {{#foreach authors}}
+                        <a href="{{url}}" class="block relative h-[40px] w-[40px] {{#unless profile_image}} second-bg {{/unless}} rounded-full">
+                            {{#if profile_image}}
+                                <img src="{{img_url profile_image size="xxs"}}" data-src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="lazyload object-cover absolute w-full h-full rounded-full">
+                            {{else}}
+                                <span class="trex_has_text text-white space-bold uppercase flex items-center justify-center h-full">
+                                    {{name}}
+                                </span>
+                            {{/if}}
+                        </a>
+                    {{/foreach}}
+                </div>
+                <!-- End Authors -->
+                <div class="space-x-1 text-xs text-grey font-medium hidden lg:flex">
+                    {{#foreach authors}}
+                        <a href="{{url}}" class="hover:underline" title="{{name}}">
+                            {{name}}
+                        </a>
+                        <span class="last:hidden">&</span>
+                    {{/foreach}}
+                </div>
+            </div>
+            <div class="flex space-x-2 justify-center sm:justify-end">
+                {{#if featured}}
+                    <div class="h-[40px] w-[40px] flex justify-center items-center bg-[#f6f7f8] rounded-full border-gray-200 border" data-tippy-content="{{t 'Featured post'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                        {{> 'icons/star'}}
+                    </div>
+                {{/if}}
+                {{#unless access}}
+                    <div class="h-[40px] w-[40px] flex justify-center items-center bg-[#f6f7f8] rounded-full border-gray-200 border" data-tippy-content="{{t 'Locked'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                        {{> 'icons/lock'}}
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    {{/has}}
+    {{#if feature_image}}
+        <div class="relative mb-5">
+            <a href="{{url}}" class="rounded-[32px] relative overflow-hidden h-[300px] sm:h-[200px] md:h-[280px] lg:h-[360px] w-full block">
+                <img class="rounded-[32px] hover:scale-[1.08] transition duration-300 ease-in-out lazyload fadeup absolute object-cover object-top w-full h-full" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+            </a>
+        </div>
+    {{/if}}
+    {{#if title}}
+        <a href="{{url}}">
+            <h3 class="mb-3 text-[23px] space-bold second-color leading-7 line-clamp-2">
+                {{title}}
+            </h3>
+        </a>
+    {{/if}}
+    <div class="text-grey text-sm font-medium line-clamp-2">
+        {{excerpt}}
+    </div>
+    {{^has tag="#project"}}
+        <hr class="border-gray-100 my-4">
+        <div class="flex justify-between items-center">
+            <a href="{{url}}" class="text-xs uppercase space-medium second-color">
+                {{t "Read more"}}
+            </a>
+            <div class="text-xs text-grey font-medium">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                <span> - </span>
+                <span>{{reading_time}}</span>
+            </div>
+        </div>
+    {{/has}}
+</article>

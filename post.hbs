@@ -1,0 +1,136 @@
+{{!< default}}
+
+<main>
+    {{#post}}
+    <div>
+        <article class="{{post_class}}">
+            <div class="bg-[#f6f7f8] py-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 container">
+                    <div class="sm:mt-10">
+                        <div class="flex justify-between sm:items-center flex-col space-y-3 sm:space-y-0 sm:flex-row">
+                            <div class="text-sm font-semibold text-grey capitalize">
+                                {{tags separator=" - "}}
+                            </div>
+                            <div class="flex space-x-2 sm:justify-end">
+                                {{#if featured}}
+                                    <div class="h-[40px] w-[40px] flex justify-center items-center bg-[#f6f7f8] rounded-full border-gray-200 border" data-tippy-content="{{t 'Featured post'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                                        {{> 'icons/star'}}
+                                    </div>
+                                {{/if}}
+                                {{#unless access}}
+                                    <div class="h-[40px] w-[40px] flex justify-center items-center bg-[#f6f7f8] rounded-full border-gray-200 border" data-tippy-content="{{t 'Locked'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                                        {{> 'icons/lock'}}
+                                    </div>
+                                {{/unless}}
+                                {{#if comments}}
+                                    <div class="px-3 self-center py-2 text-xs font-semibold flex justify-center items-center bg-[#f6f7f8] rounded-full border-gray-200 border">
+                                        {{comment_count empty="0 comments" singular="omment" plural="comments"}}
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <h1 class="text-5xl space-bold second-color mt-4">
+                            {{title}}
+                        </h1>
+                        <div class="mt-4">
+                            {{excerpt}}
+                        </div>
+                        <!-- -->
+                        <div class="flex justify-between items-center my-6">
+                            <div class="flex items-center space-x-2 justify-center sm:justify-start">
+                                <!-- Authors -->
+                                <div class="flex -space-x-4">
+                                    {{#foreach authors}}
+                                        <a href="{{url}}" class="block relative h-[40px] w-[40px] {{#unless profile_image}} second-bg {{/unless}} rounded-full">
+                                            {{#if profile_image}}
+                                                <img src="{{img_url profile_image size="xxs"}}" data-src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="lazyload object-cover absolute w-full h-full rounded-full">
+                                            {{else}}
+                                                <span class="trex_has_text text-white space-bold uppercase flex items-center justify-center h-full">
+                                                    {{name}}
+                                                </span>
+                                            {{/if}}
+                                        </a>
+                                    {{/foreach}}
+                                </div>
+                                <!-- End Authors -->
+                                <div class="space-x-1 text-xs text-grey font-medium hidden lg:flex">
+                                    {{#foreach authors}}
+                                        <a href="{{url}}" class="hover:underline" title="{{name}}">
+                                            {{name}}
+                                        </a>
+                                        <span class="last:hidden">&</span>
+                                    {{/foreach}}
+                                </div>
+                            </div>
+                            <div class="text-xs text-grey font-medium">
+                                <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                                <span> - </span>
+                                <span>{{reading_time}}</span>
+                            </div>
+                        </div>
+                        <!-- -->
+                    </div>
+                    <div>
+                        <div class="h-auto rounded-[32px]">
+                        {{#if feature_image}}
+                            <figure class="relative">
+                                <div class="rounded-[32px] relative overflow-hidden h-[350px] md:h-[500px] lg:h-[600px] w-full block">
+                                    <img class="rounded-[32px] hover:scale-[1.08] transition duration-300 ease-in-out lazyload fadeup absolute object-cover object-top w-full h-full" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                                </div>
+                                {{#if feature_image_caption}}
+                                    <figcaption class="pl-6 text-xs mt-2 text-grey font-medium"> 
+                                    {{feature_image_caption}}
+                                    </figcaption>
+                                {{/if}}
+                            </figure>
+                        {{/if}}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="max-w-[1100px] mx-auto px-10 pt-4">
+                    <div  id="trex_article_content" class="prose-base prose-img:m-0 prose-hr:border-gray-200 font-medium prose-headings:second-color prose-figcaption:second-color">
+                        {{content}}
+                    </div>
+                    <div class="border-t border-b border-gray-100 pt-6 pb-9 mt-16 text-center">
+                        <span class="uppercase space-bold text-sm">{{t "share"}}</span>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="https://www.facebook.com/share.php?u={{url absolute="true"}}" class="w-[40px] h-[40px] flex justify-center items-center bg-[#f6f7f8] hover:bg-gray-100">
+                                {{> 'icons/facebook-share'}}
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?text={{url absolute="true"}}" class="w-[40px] h-[40px] flex justify-center items-center bg-[#f6f7f8] hover:bg-gray-100">
+                                {{> 'icons/twitter-share'}}
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&title={{title}}=&url={{url absolute="true"}}" class="w-[40px] h-[40px] flex justify-center items-center bg-[#f6f7f8] hover:bg-gray-100">
+                                {{> 'icons/linkedin-share'}}
+                            </a>
+                            <a href="http://pinterest.com/pin/create/link/?url={{url absolute="true"}}" class="w-[40px] h-[40px] flex justify-center items-center bg-[#f6f7f8] hover:bg-gray-100">
+                                {{> 'icons/pinterest-share'}}
+                            </a>
+                            <button id="trex_copy" class="w-[40px] h-[40px] flex justify-center items-center bg-[#f6f7f8] hover:bg-gray-100">
+                                {{> 'icons/copy'}}
+                            </button>
+                        </div>
+                        <div class="text-grey text-xs font-medium mt-4 hidden" id="trex_copy_msg">
+                            {{t "The link has been copied!"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="max-w-[1000px] mx-auto">
+            {{> 'post-navigation'}}
+            {{#if comments}}
+                {{> 'comments'}}
+            {{/if}}
+        </div>
+
+        {{> 'related-posts'}}
+
+    </div>
+    {{/post}}
+</main>

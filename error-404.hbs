@@ -1,0 +1,26 @@
+{{!< default}}
+
+
+
+<main>
+    <div class="w-[88vw] xl:w-[60vw] 2xl:w-[900px] mx-auto mt-24">
+        <div class="mb-12 flex flex-col items-center">
+            <div class="flex space-x-3 items-center mb-4">
+                <h1 class="text-9xl space-bold second-color leading-none">
+                    {{statusCode}}
+                </h1>
+            </div>
+            <div class="text-grey text-xl font-semibold">
+                {{message}}
+            </div>
+            <div class="flex justify-center mt-8 mb-10">
+                <a href="{{@site.url}}" class="px-10 py-6 text-xs uppercase text-white font-bold second-bg inline-block hover:main-bg">
+                    {{t "Back to home"}}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{> 'recommended-posts'}}
+
+</main>

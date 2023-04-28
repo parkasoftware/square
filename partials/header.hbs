@@ -1,0 +1,44 @@
+{{> 'ad'}}
+
+<header class="border-b border-gray-100 py-6">
+    <div class="container">
+        <div class="flex items-center">
+            <div>
+                {{#if @site.logo}}
+                    <a href="{{@site.url}}">
+                        <img src="{{@site.logo}}" alt="{{@site.title}}" class="max-w-[140px]">
+                    </a>
+                {{else}}
+                    <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                        {{@site.title}}
+                    </a>
+                {{/if}}
+            </div>
+            <div class="flex justify-end mr-3 xl:mr-0 xl:block xl:ml-32 flex-1">
+                {{navigation}}
+            </div>
+            <div class="flex items-center space-x-4 justify-end">
+                <button data-ghost-search>
+                    <i class='bx bx-search text-xl'></i>
+                </button>
+                {{#get "pages" filter="tag:hash-contact" limit="1" as |post|}}
+                    {{#if post}}
+                        {{#post}}
+                            <a href="{{url}}" class="second-bg hidden sm:inline-block rounded-md px-8 py-5 text-xs uppercase font-bold bg-black hover:main-bg transition-all duration-75 text-white">
+                                {{title}}
+                            </a>
+                        {{/post}}
+                    {{/if}}
+                {{/get}}
+                {{#if member}}
+                    <button data-portal="account/profile" data-tippy-content="{{t 'Profile'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                        {{> 'icons/user'}}
+                    </button>
+                    <button data-members-signout data-tippy-content="{{t 'Logout'}}" data-tippy-placement="bottom" data-tippy-animation="fade">
+                        {{> 'icons/logout'}}
+                    </button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</header>

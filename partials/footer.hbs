@@ -1,0 +1,67 @@
+<footer class="text-center py-16">
+    <div class="container">
+        <div class="text-3xl second-color space-bold mb-2">
+            {{t "Sign up to our newsletters"}}
+        </div>
+
+        <div class="text-sm text-grey">
+            {{t "Subscribe now to get notified about excluive stories from the writing every week!"}}
+        </div>
+
+        <form class="mt-10 max-w-[550px] mx-auto" data-members-form="subscribe">
+            <div class="relative">
+                <input data-members-email type="email"  placeholder="{{t 'email adress'}}" class="second-color rounded-lg text-sm border border-gray-200 px-4 py-4 placeholder:text-xs placeholder:uppercase block !outline-none w-full placeholder:text-grey" required autocomplete="off">
+                <button type="submit" class="rounded-lg absolute right-2 top-1 bottom-1 py-3 text-[11px] tracking-wide uppercase font-bold second-bg hover:main-bg inline-block px-8 transition-all duration-75 text-white">
+                    {{t "subscribe"}}
+                </button>
+            </div>
+            <div class="mt-2 text-left font-medium text-grey italic">
+                <small class="alert-loading block">{{t "Processing your application..."}}</small>
+                <small class="alert-success block">{{t "Please check your inbox and click the link to confirm your subscription..."}}</small>
+                <small class="alert-error block">{{t "There was an error sending the email..."}}</small>
+            </div>
+        </form>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 mt-24 gap-y-10 lg:gap-0">
+            {{#if @site.secondary_navigation}}
+                {{navigation type="secondary"}}
+            {{/if}}
+            <div class="text-center">
+                {{#if @site.logo}}
+                    <a href="{{@site.url}}">
+                        <img src="{{@site.logo}}" alt="{{@site.title}}" class="max-w-[110px] mx-auto block" />
+                    </a>
+                {{else}}
+                    <a href="{{@site.url}}">
+                        <span class="text-4xl font-bold tracking-tighter">{{@site.title}}</span>
+                    </a>
+                {{/if}}
+                <div class="text-center text-xs mt-4 text-grey font-semibold">
+                    &copy; {{@site.title}} - {{t "Published with"}} <a href="https://ghost.org/" target="_blank" class="s_link">Ghost</a>
+                </div>
+            </div>
+
+            <!-- Social -->
+            <div class="flex items-center justify-center lg:ml-auto space-x-6 h-full">
+                {{#if @site.facebook}}
+                    <a href="https://facebook.com/{{@site.facebook}}" target="_blank">
+                        {{> 'icons/facebook'}}
+                    </a>
+                {{/if}}
+                {{#if @site.twitter}}
+                    <a href="https://twitter.com/{{@site.twitter}}" target="_blank">
+                        {{> 'icons/twitter'}}
+                    </a>
+                {{/if}}
+                {{#if @custom.instagram_link}}
+                    <a href="{{@custom.instagram_link}}" target="_blank">
+                        {{> 'icons/instagram'}}
+                    </a>
+                {{/if}}
+            </div>
+            <!-- End Social -->
+
+        </div>
+
+    </div>
+</footer>

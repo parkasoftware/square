@@ -1,0 +1,23 @@
+{{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}+tag:-hash-project" include="tags,authors" limit="3"}}
+{{#match posts.length ">" 0}}
+    <section class="bg-[#f6f7f8] py-8 mt-16">
+        <div class="container">
+            <!-- Title -->
+            <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row justify-between items-start mb-6">
+                <div class="basis-2/4">
+                    <h2 class="space-bold text-3xl second-color">
+                        {{t "Related posts"}}
+                    </h2>
+                </div>
+            </div>
+            <!-- Projects -->
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {{#foreach posts}}
+                    {{> 'loop-project'}}
+                {{/foreach}}
+            </div>
+            <!-- /Projects -->
+        </div>
+    </section>
+{{/match}}
+{{/get}}

@@ -1,0 +1,35 @@
+{{!< default}}
+
+<main>
+    {{#tag}}
+        <div class="max-w-[700px] mx-auto text-center py-24">
+            <div class="max-w-[100px] h-[100px] rounded-full relative mx-auto overflow-hidden {{#unless feature_image}} second-bg {{/unless}} text-white">
+                {{#if feature_image}}
+                    <img src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xs"}}" alt="{{name}}" class="lazyload object-cover w-full h-full">
+                {{else}}
+                    <span class="trex_has_text text-5xl font-extrabold uppercase flex items-center justify-center h-full">{{name}}</span>
+                {{/if}}
+            </div>
+            <h1 class="text-2xl space-bold second-color capitalize mt-2">
+                {{name}}
+            </h1>
+            {{#if description}}
+                <p class="text-[#ababab] text-sm max-w-[500px] mx-auto font-medium text-center mt-2">
+                    {{description}}
+                </p>
+            {{/if}}
+        </div>
+    {{/tag}}
+    <div class="bg-[#f6f7f8] py-16">
+        <div class="container">
+            <!-- Projects -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="trex_blog">
+                {{#foreach posts}}
+                    {{> 'loop'}}
+                {{/foreach}}
+            </div>
+            <!-- /Projects -->
+            {{pagination}}
+        </div>
+    </div>
+</main>

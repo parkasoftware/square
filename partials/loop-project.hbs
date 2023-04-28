@@ -1,0 +1,19 @@
+<article class="h-auto bg-white rounded-[32px] p-6 pb-8 trex_post">
+    {{#if feature_image}}
+        <div class="relative mb-5">
+            <a href="{{url}}" class="rounded-[32px] relative overflow-hidden h-[300px] sm:h-[200px] md:h-[280px] lg:h-[360px] w-full block">
+                <img class="rounded-[32px] hover:scale-[1.08] transition duration-300 ease-in-out lazyload fadeup absolute object-cover object-top w-full h-full" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+            </a>
+        </div>
+    {{/if}}
+    {{#if title}}
+        <a href="{{url}}">
+            <h3 class="mb-3 text-[23px] space-bold second-color leading-7 line-clamp-2">
+                {{title}}
+            </h3>
+        </a>
+    {{/if}}
+    <div class="text-grey text-sm font-medium line-clamp-2">
+        {{excerpt}}
+    </div>
+</article>

@@ -1,0 +1,36 @@
+<div class="bg-white border-b-8 border-b-[#f1f2f2] rounded-[32px] h-auto py-8 px-4 flex flex-col items-center justify-center">
+    <a href="{{url}}" class="block mb-3 w-[100px] h-[100px] relative {{#unless profile_image}} second-bg {{/unless}} rounded-full overflow-hidden">
+        {{#if profile_image}}
+            <img src="{{img_url profile_image size="xxs"}}" data-src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="hover:scale-[1.08] transition duration-300 ease-in-out fadeup lazyload object-cover absolute w-full h-full">
+        {{else}}
+            <span class="trex_has_text text-3xl text-white space-bold uppercase flex items-center justify-center h-full">{{name}}</span>
+        {{/if}}
+    </a>
+    <div class="space-bold text-xl mb-2">
+        <a href="{{url}}">
+            {{name}}
+        </a>
+    </div>
+    {{#if bio}}
+        <div class="text-grey text-sm text-center line-clamp-2 mb-5">
+            {{bio}}
+        </div>
+    {{/if}}
+    <div class="flex justify-center items-center space-x-3">
+        {{#if facebook}}
+            <a href="https://fb.com/{{facebook}}" target="_blank">
+                {{> 'icons/facebook'}}
+            </a>
+        {{/if}}
+        {{#if twitter}}
+            <a href="https://twitter.com/{{twitter}}" target="_blank">
+                {{> 'icons/twitter'}}
+            </a>
+        {{/if}}
+        {{#if website}}
+            <a href="{{website}}" target="_blank">
+                {{> 'icons/link'}}
+            </a>
+        {{/if}}
+    </div>
+</div>

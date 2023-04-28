@@ -1,0 +1,18 @@
+routes:
+  /: home
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: index
+    filter: 'tag:-hash-project'
+    data: page.blog
+  /projects/:
+    permalink: /projects/{slug}/
+    template: projects
+    filter: 'tag:hash-project'
+    data: page.project
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

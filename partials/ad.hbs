@@ -1,0 +1,7 @@
+{{#if @custom.show_notification}}
+<div class="text-center p-3 font-medium text-sm" style="background-color:{{#if @custom.notification_color}} {{@custom.notification_color}} {{else}}#d8fb52;{{/if}}">
+    {{@custom.notification_text}} <a href="{{@custom.notification_link}}" class="underline font-bold text-sm uppercase">
+        {{@custom.notification_link_text}}
+    </a>
+</div>
+{{/if}}

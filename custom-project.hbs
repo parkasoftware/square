@@ -1,0 +1,60 @@
+{{!< default}}
+<main>
+    {{#post}}
+    <article class="{{post_class}}" id="project_single">
+        <div class="bg-[#f6f7f8] py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 container">
+                <div class="sm:mt-10">
+                    <div class="text-sm font-semibold text-grey capitalize mb-2">
+                        {{tags separator=" - "}}
+                    </div>
+                    <h1 class="text-5xl space-bold second-color">
+                        {{title}}
+                    </h1>
+                    <div class="mt-4">
+                        {{excerpt}}
+                    </div>
+                    
+                    <div class="sm:space-x-3 mt-10 hidden flex-col sm:flex-row items-start mb-10 space-y-3 sm:space-y-0" id="trex_project_info_wrapper">
+                        <a href="#" class="rounded-lg infinite-scroll-button px-8 py-5 text-sm uppercase font-bold inline-block hover:main-bg transition-all duration-75 second-color" style="background-color:{{#if @custom.notification_color}} {{@custom.notification_color}} {{else}}#d8fb52;{{/if}}" id="trex_buy_btn">
+                            <span>$99</span> - buy now
+                        </a>
+                        <a href="#" target="_blank" class="rounded-lg infinite-scroll-button px-8 py-5 text-sm uppercase font-bold second-bg inline-block hover:main-bg transition-all duration-75 text-white" id="trex_demo_btn">
+                            {{t "live demo"}}
+                        </a>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="h-auto rounded-[32px]">
+                        {{#if feature_image}}
+                            <figure class="relative">
+                                <div class="p-2 lg:p-6 bg-white rounded-[32px]">
+                                    <div class="bg-white rounded-[32px] relative overflow-hidden h-[350px] md:h-[500px] lg:h-[600px] w-full block">
+                                        <img class="rounded-[32px] hover:scale-[1.08] transition duration-300 ease-in-out lazyload fadeup absolute object-cover object-top w-full h-full" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                                    </div>
+                                </div>
+                                {{#if feature_image_caption}}
+                                    <figcaption class="pl-6 text-xs mt-4 text-grey font-medium"> 
+                                    {{feature_image_caption}}
+                                    </figcaption>
+                                {{/if}}
+                            </figure>
+                        {{/if}}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="border-b border-gray-100 pb-16">
+            <div class="max-w-[1100px] mx-auto px-10 pt-4 prose-base prose-img:m-0 prose-hr:border-gray-200 font-medium prose-headings:second-color prose-figcaption:second-color">
+                <div  id="trex_article_content">
+                    {{content}}
+                </div>
+        </div>
+        </div>
+
+    </article>
+    {{/post}}
+</main>
